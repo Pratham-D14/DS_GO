@@ -103,7 +103,7 @@
   margin-top: 20px; /* Space between text and video */
   transform: translateX(200%);
   animation: slideIn 1s ease-out forwards;
-  animation-delay: 18s; /* Start animation after 10 seconds */
+  animation-delay: 22.5s; /* Start animation after 10 seconds */
 }
 
 .video video {

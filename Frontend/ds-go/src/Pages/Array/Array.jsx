@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Navbar from "../../components/navbar";
 import "./Array.css";
-import AnimatedArray from "./animation";
+import AnimatedArray from "./Components/animation";
 
 const Array = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);

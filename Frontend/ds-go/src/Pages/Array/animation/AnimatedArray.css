@@ -6,7 +6,7 @@
   margin-top: 30px;
   transform: translateX(200%);
   animation: slideInArray 1s ease-out forwards;
-  animation-delay: 5.1s; /* Start animation after 10 seconds */
+  animation-delay: 15s; /* Start animation after 10 seconds */
 }
 
 /* Keyframes for sliding in animation */

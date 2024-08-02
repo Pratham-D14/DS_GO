@@ -1,0 +1,38 @@
+.screen-1 {
+  margin-left: 10%;
+  font-family: "Roboto", sans-serif;
+  gap: 50px;
+}
+
+h1 {
+  margin-top: 20px;
+}
+.topics {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-left: 5%;
+  width: 50%;
+}
+
+.topics > div {
+  /* background-color: white; */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5px;
+  padding: 15px 25px;
+}
+
+.topic-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.learn {
+  font-size: 10px;
+  color: blue;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

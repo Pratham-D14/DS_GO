@@ -4,6 +4,19 @@
   display: flex;
   margin-left: 0;
   margin-top: 30px;
+  transform: translateX(200%);
+  animation: slideInArray 1s ease-out forwards;
+  animation-delay: 5.1s; /* Start animation after 10 seconds */
+}
+
+/* Keyframes for sliding in animation */
+@keyframes slideInArray {
+  0% {
+    transform: translateX(-100%); /* Start off the screen on the right */
+  }
+  100% {
+    transform: translateX(0); /* Move into the viewport */
+  }
 }
 
 .array-box {

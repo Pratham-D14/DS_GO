@@ -101,6 +101,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   max-width: 600px; /* Ensures video does not stretch too far */
   margin-top: 20px; /* Space between text and video */
+  transform: translateX(200%);
+  animation: slideIn 1s ease-out forwards;
+  animation-delay: 9.3s; /* Start animation after 10 seconds */
 }
 
 .video video {
@@ -112,6 +115,15 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation on hover */
 }
 
+/* Keyframes for sliding in animation */
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%); /* Start off the screen on the right */
+  }
+  100% {
+    transform: translateX(0); /* Move into the viewport */
+  }
+}
 .video video:hover {
   transform: scale(1.02); /* Slight zoom effect */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */

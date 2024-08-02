@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Navbar from "../../components/navbar";
 import "./Array.css";
 import AnimatedArray from "./animation";
@@ -15,45 +15,63 @@ const Array = () => {
   ];
 
   const toggleFullscreen = () => {
+    // Enter fullscreen
     if (!isFullscreen) {
       if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
+        videoRef.current.requestFullscreen().catch((err) => {
+          console.error("Error attempting to enable fullscreen mode:", err);
+        });
       } else if (videoRef.current.mozRequestFullScreen) {
         // Firefox
-        videoRef.current.mozRequestFullScreen();
+        videoRef.current.mozRequestFullScreen().catch((err) => {
+          console.error("Error attempting to enable fullscreen mode:", err);
+        });
       } else if (videoRef.current.webkitRequestFullscreen) {
-        // Chrome, Safari and Opera
-        videoRef.current.webkitRequestFullscreen();
+        // Chrome, Safari, and Opera
+        videoRef.current.webkitRequestFullscreen().catch((err) => {
+          console.error("Error attempting to enable fullscreen mode:", err);
+        });
       } else if (videoRef.current.msRequestFullscreen) {
         // IE/Edge
-        videoRef.current.msRequestFullscreen();
+        videoRef.current.msRequestFullscreen().catch((err) => {
+          console.error("Error attempting to enable fullscreen mode:", err);
+        });
       }
       setIsFullscreen(true);
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        // Firefox
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        // Chrome, Safari and Opera
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        // IE/Edge
-        document.msExitFullscreen();
+      // Exit fullscreen
+      if (document.fullscreenElement) {
+        // Check if document is in fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          // Firefox
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          // Chrome, Safari, and Opera
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          // IE/Edge
+          document.msExitFullscreen();
+        }
+        setIsFullscreen(false);
       }
-      setIsFullscreen(false);
     }
   };
 
   // Event listener for click outside video
   const handleClickOutside = (event) => {
-    if (isFullscreen && !videoRef.current.contains(event.target)) {
+    if (
+      isFullscreen &&
+      videoRef.current &&
+      !videoRef.current.contains(event.target)
+    ) {
+      // Check if the click was outside the video element and not in fullscreen mode
       toggleFullscreen();
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isFullscreen]);
@@ -66,11 +84,13 @@ const Array = () => {
           <h1 className="heading">Array is Simple!</h1>
           <p className="defination">
             An array is a{" "}
-            <span className="highlight">way to organize data</span> in a
-            computer so that it is easy to find and use. Imagine it as a row of
-            boxes, where each box holds one piece of information, like a number
-            or a word. This makes it easy to keep track of and use many pieces
-            of data with one name.
+            <span className="highlight">
+              way to organize data in a computer
+            </span>{" "}
+            so that it is easy to find and use. Imagine it as a row of boxes,
+            where each box holds one piece of information, like a number or a
+            word. This makes it easy to keep track of and use many pieces of
+            data with one name.
           </p>
           <AnimatedArray />
         </div>

@@ -6,6 +6,7 @@
   width: 100vw;
   background-color: #0e141e;
   color: white;
+  overflow-x: hidden;
 }
 
 .array-content {

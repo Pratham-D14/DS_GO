@@ -1,0 +1,72 @@
+.screen2-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.methodsExplanation {
+  margin: auto;
+  line-height: 2;
+}
+
+.description {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.droparea-div {
+  display: flex;
+}
+
+.interactive-screen {
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+/* src/App.css */
+
+.droparea {
+  background-color: #80808040;
+  border: 2px solid #a79f9f;
+  border-radius: 6px;
+  min-height: 60px;
+  width: 130px;
+}
+
+.dragarea {
+  background-color: lightblue;
+  border: 2px solid #a79f9f;
+  border-radius: 6px;
+  padding: 10px;
+  position: relative; /* Ensure z-index works */
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.text-align {
+  text-align: center;
+}
+
+.bg {
+  background: green;
+  padding: 10px;
+}
+
+.droparea.active {
+  background-color: #d3d3d3; /* Indicate active drop area */
+}

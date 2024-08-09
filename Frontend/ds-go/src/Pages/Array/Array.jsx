@@ -3,6 +3,7 @@ import Navbar from "../../components/navbar";
 import "./Array.css";
 import AnimatedArray from "./Components/animation";
 import InteractiveAnimation from "./Components/InteractiveAnimation/InteractiveAnimation";
+// import { useNavigate } from "react-router-dom";
 
 const Array = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -72,6 +73,20 @@ const Array = () => {
     }
   };
 
+  const onInteractive = () => {
+    let screen1 = document.getElementById("screen-1");
+    let screen2 = document.getElementById("screen-2");
+
+    screen1.classList.toggle("hide");
+    screen2.classList.toggle("hide");
+  };
+
+  // const navigate = useNavigate();
+
+  // function onInteractive() {
+  //   navigate("/interactiveAnimation");
+  // }
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
@@ -80,7 +95,7 @@ const Array = () => {
   return (
     <div className="array-page">
       <Navbar links={links} />
-      <div className="array-content">
+      <div className="array-content" id="screen-1">
         <div className="textanimation">
           <h1 className="heading">Array is Simple!</h1>
           <p className="defination">
@@ -95,17 +110,23 @@ const Array = () => {
           </p>
           <AnimatedArray />
         </div>
-        <div
-          className={`video ${isFullscreen ? "fullscreen" : ""}`}
-          onClick={toggleFullscreen}
-        >
-          <video
-            ref={videoRef}
-            controls
-            src={require("../../Videos/array.mp4")}
-          ></video>
+        <div className="right-side">
+          <div
+            className={`video ${isFullscreen ? "fullscreen" : ""}`}
+            onClick={toggleFullscreen}
+          >
+            <video
+              ref={videoRef}
+              controls
+              src={require("../../Videos/array.mp4")}
+            ></video>
+          </div>
+          <button className="on-interactive  btn" onClick={onInteractive}>
+            Learn with Animation
+          </button>
         </div>
       </div>
+      <InteractiveAnimation className="hide" />
     </div>
   );
 };

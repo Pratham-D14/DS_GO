@@ -12,7 +12,7 @@
 /* Keyframes for sliding in animation */
 @keyframes slideInArray {
   0% {
-    transform: translateX(-100%); /* Start off the screen on the right */
+    transform: translateX(-180%); /* Start off the screen on the right */
   }
   100% {
     transform: translateX(0); /* Move into the viewport */
